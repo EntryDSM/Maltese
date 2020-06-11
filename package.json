@@ -9,16 +9,21 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "exam": "cd example && npm i && npm start"
+    "exam": "cd example && npm start"
   },
   "author": "junukim.dev@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "@svgr/rollup": "5.4.0",
     "@types/react": "^16.8.20",
+    "@types/react-infinite-scroller": "1.2.1",
     "@types/react-textarea-autosize": "^4.3.4",
     "@types/socket.io-client": "^1.4.32",
     "@types/styled-components": "^4.1.16",
     "rollup": "^1.15.5",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-peer-deps-external": "2.2.2",
     "rollup-plugin-typescript2": "^0.20.1",
     "rollup-plugin-url": "^2.2.2",
     "rollup-watch": "^4.3.1",
@@ -30,11 +35,12 @@
     "tslint-react-hooks": "2.2.2",
     "typescript": "^3.5.2"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-textarea-autosize": "^7.1.0",
     "socket.io-client": "^2.2.0",
-    "styled-components": "^4.3.1"
+    "styled-components": "^4.3.1",
+    "react-infinite-scroller": "^1.2.4"
   }
 }
