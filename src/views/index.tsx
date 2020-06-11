@@ -2,8 +2,12 @@ import React, { FC } from "react";
 
 import Messenger from "./messenger/index";
 
-const Views: FC = () => {
-  return <Messenger />;
+interface OwnProps {
+  isLogin: boolean;
+}
+
+const Views: FC<OwnProps> = ({ isLogin }) => {
+  return <Messenger isLogin={isLogin} />;
 };
 
 export default Views;
