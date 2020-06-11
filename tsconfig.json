@@ -2,16 +2,22 @@
   "compilerOptions": {
     "outDir": "build",
     "sourceMap": true,
-    "noImplicitAny": false,
     "esModuleInterop": true,
+    "allowJs": false,
     "module": "esnext",
     "target": "es2015",
     "jsx": "react",
-    "baseUrl": "./",
     "declaration": true,
-    "declarationDir": "dist/types",
-    "types": ["node"],
-    "typeRoots": ["node_modules/@types", "src/@types"]
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["./src/**/*.tsx", "./src/@types/**/*.d.ts"],
   "exclude": ["node_modules", "build", "dist", "example", "rollup.config.js"]
