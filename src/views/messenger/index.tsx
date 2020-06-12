@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback } from "react";
+import React, { FC, useState, useEffect, useCallback } from "react";
 
 import { OpenMark, CloseMark } from "../../assets";
 import Chatting from "../chatting";
@@ -14,6 +14,13 @@ const Messenger: FC<OwnProps> = ({ isLogin }) => {
   const isOpenHandler = useCallback(() => {
     setIsOpen(!isOpen);
   }, [isOpen]);
+
+  useEffect(() => {
+    [OpenMark, CloseMark].forEach((picture) => {
+      const img = new Image();
+      img.src = picture.fileName;
+    });
+  }, []);
 
   return (
     <S.Wrapper>
