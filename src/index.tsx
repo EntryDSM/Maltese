@@ -1,3 +1,3 @@
-import Messenger from "./views/index";
+import View from "./views/index";
 
-export default Messenger;
+export default View;
