@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
     resize: none;
     background-color: ${Thema.SERVE_COLOR_1};
     color: ${Thema.SERVE_COLOR_3};
-    font-size: 10px;
+    font-size: 12px;
 
     &::-webkit-scrollbar {
       background: none;
@@ -42,6 +42,7 @@ export const Wrapper = styled.div`
   > button {
     all: unset;
     cursor: pointer;
+    transition: 0.2s;
 
     &:active {
       opacity: 0.2;
