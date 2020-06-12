@@ -13,8 +13,8 @@ const ChattingSender: FC = () => {
   }, [message]);
 
   const handleKeyPress = useCallback(
-    ({ key }: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      keyPressEnter(key, sendMessage);
+    ({ key, shiftKey }: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      keyPressEnter(key, sendMessage, shiftKey);
     },
     []
   );
