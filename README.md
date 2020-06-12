@@ -5,11 +5,12 @@ Entry Q&amp;A system front
 ## 사용방법
 
 ```ter
-npm i -D react react-dom react-textarea-autosize socket.io-client styled-components react-infinite-scroller
+npm i -D react react-dom axios react-textarea-autosize socket.io-client styled-components react-infinite-scroller
 ```
 
 "react": "^16.8.6",
 "react-dom": "^16.8.6",
+"axios": "0.19.2",
 "react-textarea-autosize": "^7.1.0",
 "socket.io-client": "^2.2.0",
 "styled-components": "^4.3.1",
