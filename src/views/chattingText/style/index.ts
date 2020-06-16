@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { Thema } from "../../../Thema";
 
@@ -23,7 +23,8 @@ export const ChatBubble = styled.div<{ isAdmin: boolean }>`
   > p {
     margin: 0;
     width: fit-content;
-    max-width: 280px;
+    position: relative;
+    max-width: 260px;
     min-height: 36px;
     padding: 10px 12px;
     box-sizing: border-box;
@@ -35,6 +36,61 @@ export const ChatBubble = styled.div<{ isAdmin: boolean }>`
       isAdmin ? Thema.MAIN_COLOR_1 : Thema.SERVE_COLOR_1};
     color: ${({ isAdmin }) =>
       isAdmin ? Thema.MAIN_COLOR_2 : Thema.SERVE_COLOR_2};
+
+    > span {
+      display: none;
+      font-size: 11px;
+      color: #ffffff;
+      max-width: 80px;
+      background: #000000;
+      padding: 5px;
+      position: absolute;
+      border-radius: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      left: ${({ isAdmin }) => isAdmin && "-100px"};
+      right: ${({ isAdmin }) => !isAdmin && "-100px"};
+      ${({ isAdmin }) =>
+        isAdmin
+          ? css`
+              &:after {
+                left: 100%;
+                top: 50%;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+                border-color: rgba(0, 0, 0, 0);
+                border-left-color: #000;
+                border-width: 6px;
+                margin-top: -6px;
+              }
+            `
+          : css`
+              &:after {
+                right: 100%;
+                top: 50%;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+                border-color: rgba(0, 0, 0, 0);
+                border-right-color: #000;
+                border-width: 6px;
+                margin-top: -6px;
+              }
+            `}
+    }
+
+    &:hover {
+      > span {
+        display: block;
+      }
+    }
   }
 `;
 
