@@ -6,7 +6,6 @@
     "entry-maltese": "git+https://github.com/EntryDSM/Maltese.git",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-maltese": "file:..",
     "react-scripts": "3.4.1",
     "react-uikit-sample": "1.0.3"
   },

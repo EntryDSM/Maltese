@@ -6,8 +6,11 @@ Entry Q&amp;A system front
 
 ```ter
 npm i -D react react-dom axios react-textarea-autosize socket.io-client styled-components react-infinite-scroller
+
+npm i https://github.com/EntryDSM/Maltese.git
 ```
 
+```
 "react": "^16.8.6",
 "react-dom": "^16.8.6",
 "axios": "0.19.2",
@@ -15,21 +18,22 @@ npm i -D react react-dom axios react-textarea-autosize socket.io-client styled-c
 "socket.io-client": "^2.2.0",
 "styled-components": "^4.3.1",
 "react-infinite-scroller": "^1.2.4"
+```
 
-해당 라이브러리가 peerDependencies로 들어가있음.
+해당 라이브러리가 peerDependencies로 들어가있음. 만약 위의 lib들이 전부 develop에 install되어 있다면 해당 단계는 건너뛰어도 무관.
 
 ## 사용 예시
 
 ```js
 import React from "react";
-import Maltese from "react-maltese";
+import Maltese from "entry-maltese";
 
 import "./index.css";
 
 function App() {
   return (
     <div className="App">
-      <Maltese isLogin={로그인 여부} />
+      <Maltese token={로그인 토큰} isLogin={로그인 여부} />
     </div>
   );
 }
