@@ -8,16 +8,17 @@ import * as S from "./style/index";
 interface OwnProps {
   isOpen: boolean;
   isLogin: boolean;
+  token: string;
 }
 
-const Chatting: FC<OwnProps> = ({ isOpen, isLogin }) => {
+const Chatting: FC<OwnProps> = ({ isOpen, isLogin, token }) => {
   return isOpen ? (
     <S.Wrapper>
       <header>QnA</header>
       <div>
         {isLogin ? (
           <S.MessageView>
-            <ChattingText />
+            <ChattingText token={token} />
             <ChattingSender />
           </S.MessageView>
         ) : (
