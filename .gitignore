@@ -2,8 +2,6 @@
 
 .rpt2_cache
 
-dist
-
 node_modules
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos
@@ -38,5 +36,3 @@ Temporary Items
 .apdisk
 
 # End of https://www.toptal.com/developers/gitignore/api/
-
-.history

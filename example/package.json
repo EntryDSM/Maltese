@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "entry-maltese": "git+https://github.com/EntryDSM/Maltese.git",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-maltese": "file:..",

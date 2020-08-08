@@ -1,5 +1,5 @@
 import React from "react";
-import Maltese from "react-maltese";
+import Maltese from "entry-maltese";
 
 import "./index.css";
 
