@@ -1,22 +1,29 @@
 import React, { FC, useState, useCallback } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-import { keyPressEnter } from "../../utils/keyPress";
+import { sendMessage } from "../../data/socket";
 import { SendMark } from "../../assets";
 import * as S from "./style/index";
 
 const ChattingSender: FC = () => {
   const [message, setMessage] = useState("");
 
-  const sendMessage = useCallback(() => {
-    setMessage("");
+  const send = useCallback(async () => {
+    if (message === "") {
+      return;
+    }
+    await sendMessage({ content: message });
+    await setMessage("");
   }, [message]);
 
   const handleKeyPress = useCallback(
-    ({ key, shiftKey }: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      keyPressEnter(key, sendMessage, shiftKey);
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        send();
+      }
     },
-    []
+    [send]
   );
 
   const messageHandler = useCallback(
@@ -35,7 +42,7 @@ const ChattingSender: FC = () => {
         maxRows={4}
         placeholder="메세지를 입력해 주세요"
       />
-      <button onClick={sendMessage}>
+      <button onClick={send}>
         <img src={SendMark} alt="전송" />
       </button>
     </S.Wrapper>
