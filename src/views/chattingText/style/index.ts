@@ -14,6 +14,11 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const WarningMeassage = styled.p`
+  font-size: 20px;
+  color: red;
+`;
+
 export const ChatBubble = styled.div<{ isAdmin: boolean }>`
   width: 100%;
   margin-top: 4px;

@@ -11,7 +11,7 @@ interface OwnProps {
 
 const LoadingBar: FC = () => {
   return (
-    <S.Loading key="loading">
+    <S.Loading>
       <Loading />
     </S.Loading>
   );
@@ -22,7 +22,7 @@ const InfinityScroll: FC<OwnProps> = ({ loadMore, hasMore, children }) => {
     <InfiniteScroll
       pageStart={0}
       loadMore={loadMore}
-      loader={<LoadingBar />}
+      loader={<LoadingBar key="loading" />}
       hasMore={hasMore}
       useWindow={false}
       isReverse={true}
