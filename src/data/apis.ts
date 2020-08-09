@@ -26,7 +26,7 @@ export const getChatsApi = async (payload: AccessToken & PagenationPayload) => {
     const response = await instanceAxios.get<User[]>("/v5/qna/chats", {
       headers: authorizationHeader(payload.accessToken),
       params: {
-        page: payload.page,
+        offset: payload.offset,
       },
     });
 

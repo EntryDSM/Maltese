@@ -100,7 +100,7 @@ const getChatsApi = (payload) => __awaiter(void 0, void 0, void 0, function* () 
         const response = yield instanceAxios.get("/v5/qna/chats", {
             headers: authorizationHeader(payload.accessToken),
             params: {
-                page: payload.page,
+                offset: payload.offset,
             },
         });
         return { data: response.data, status: response.status };
@@ -267,7 +267,7 @@ const ChattingText = ({ token }) => {
     const [hasMore, setHasMore] = useState(true);
     const fetchMoreData = useCallback(() => __awaiter(void 0, void 0, void 0, function* () {
         const chatData = yield getChatsApi({
-            page,
+            offset: (data === null || data === void 0 ? void 0 : data.length) || 0,
             accessToken: token,
         });
         const { _200, _401 } = responseStatus(chatData === null || chatData === void 0 ? void 0 : chatData.status);

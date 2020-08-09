@@ -22,7 +22,7 @@ const ChattingText: FC<OwnProps> = ({ token }) => {
 
   const fetchMoreData = useCallback(async () => {
     const chatData = await getChatsApi({
-      page,
+      offset: data?.length || 0,
       accessToken: token,
     });
     const { _200, _401 } = responseStatus(chatData?.status);

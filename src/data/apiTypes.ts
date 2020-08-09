@@ -7,7 +7,7 @@ export interface ReceiptCode {
 }
 
 export interface PagenationPayload {
-  page: number;
+  offset: number;
 }
 
 export interface SendContent {
