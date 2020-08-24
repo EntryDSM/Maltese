@@ -8,8 +8,26 @@ import TextareaAutosize from 'react-textarea-autosize';
 const setItemToSesstion = (name, data) => {
     sessionStorage.setItem(name, data);
 };
-const getItemToSesstion = (name) => sessionStorage.getItem(name);
 //# sourceMappingURL=storeage.js.map
+
+const baseURL = "https://schnauzer.entrydsm.hs.kr";
+//# sourceMappingURL=endpoints.js.map
+
+const socket = socketio(baseURL, {
+    transports: ["websocket"],
+});
+const authentication = (data) => {
+    socket.emit("authentication", data);
+};
+const sendMessage = (data) => {
+    socket.emit("new message", data);
+};
+const listenOnReceiveMessage = (listener) => {
+    socket.on("receive message", listener);
+};
+const listenOnError = (listener) => {
+    socket.on("save error", listener);
+};
 
 var CloseMark = "data:image/png;base64,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";
 
@@ -59,24 +77,6 @@ function __awaiter(thisArg, _arguments, P, generator) {
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 }
-
-const baseURL = "https://schnauzer.entrydsm.hs.kr";
-//# sourceMappingURL=endpoints.js.map
-
-const socket = socketio(baseURL, {
-    transports: ["websocket"],
-    query: `auth_token=${getItemToSesstion("messaging_token")}`,
-});
-const sendMessage = (data) => {
-    socket.emit("new message", data);
-};
-const listenOnReceiveMessage = (listener) => {
-    socket.on("receive message", listener);
-};
-const listenOnError = (listener) => {
-    socket.on("save error", listener);
-};
-//# sourceMappingURL=socket.js.map
 
 const responseStatus = (status) => {
     return {
@@ -328,6 +328,7 @@ const ChattingText = ({ token }) => {
             v.content,
             React.createElement("span", null, convertTimeStempToSentence(v.created_at)))))))))));
 };
+//# sourceMappingURL=index.js.map
 
 const Wrapper$1 = styled.div `
   width: 100%;
@@ -578,6 +579,10 @@ const Views = ({ isLogin, token }) => {
         if (!didMountRef.current) {
             didMountRef.current = true;
             setItemToSesstion("messaging_token", token);
+            authentication({
+                token,
+                type: "student",
+            });
         }
     }, []);
     return React.createElement(Messenger, { isLogin: isLogin, token: token });
