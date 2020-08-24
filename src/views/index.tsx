@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useRef } from "react";
 
 import { setItemToSesstion } from "../utils/storeage";
+import { authentication } from "../data/socket";
 import Messenger from "./messenger/index";
 
 interface OwnProps {
@@ -16,6 +17,10 @@ const Views: FC<OwnProps> = ({ isLogin, token }) => {
       didMountRef.current = true;
 
       setItemToSesstion("messaging_token", token);
+      authentication({
+        token,
+        type: "student",
+      });
     }
   }, []);
 

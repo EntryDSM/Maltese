@@ -10,6 +10,11 @@ export interface PagenationPayload {
   offset: number;
 }
 
+export interface Authentication {
+  token: string;
+  type: "admin" | "student";
+}
+
 export interface SendContent {
   content: string;
 }
