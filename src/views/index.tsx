@@ -1,30 +1,38 @@
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect } from "react";
 
-import { setItemToSesstion } from "../utils/storeage";
-import { authentication } from "../data/socket";
+import { authentication, socketConnect, socketType } from "../data/socket";
 import Messenger from "./messenger/index";
 
 interface OwnProps {
   isLogin: boolean;
-  token: string;
+  token: string | null;
+  errorHandler: (errorStatus: number) => void;
 }
 
-const Views: FC<OwnProps> = ({ isLogin, token }) => {
-  const didMountRef = useRef(false);
+const Views: FC<OwnProps> = ({ isLogin, token, errorHandler }) => {
+  const [socket, setSocket] = useState<socketType>(null);
+  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    if (!didMountRef.current) {
-      didMountRef.current = true;
-
-      setItemToSesstion("messaging_token", token);
-      authentication({
-        token,
+    if (token && !isConnected) {
+      const connected = socketConnect();
+      setSocket(connected);
+      setIsConnected(true);
+      authentication(connected)({
+        token: token || "",
         type: "student",
       });
     }
-  }, []);
+  }, [token]);
 
-  return <Messenger isLogin={isLogin} token={token} />;
+  return (
+    <Messenger
+      socket={socket}
+      isLogin={isLogin}
+      token={token || ""}
+      errorHandler={errorHandler}
+    />
+  );
 };
 
 export default Views;
