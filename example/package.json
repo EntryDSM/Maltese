@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "entry-maltese": "git+https://github.com/EntryDSM/Maltese.git",
+    "react-maltese": "file:..",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",

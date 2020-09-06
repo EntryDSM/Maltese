@@ -1,7 +1,11 @@
 import React, { FC, useState, useCallback, useEffect, useRef } from "react";
 
 import type { User } from "../../data/apiTypes";
-import { listenOnReceiveMessage, listenOnError } from "../../data/socket";
+import {
+  listenOnReceiveMessage,
+  listenOnError,
+  socketType,
+} from "../../data/socket";
 import { getChatsApi, responseStatus } from "../../data/apis";
 import InfinityScroll from "../infinityScroll";
 import { convertTimeStempToSentence } from "../../utils/convert";
@@ -9,9 +13,11 @@ import * as S from "./style/index";
 
 interface OwnProps {
   token: string;
+  socket: socketType;
+  errorHandler: (errorStatus: number) => void;
 }
 
-const ChattingText: FC<OwnProps> = ({ token }) => {
+const ChattingText: FC<OwnProps> = ({ token, socket, errorHandler }) => {
   const infinityScrollRef = useRef<HTMLDivElement>(null);
   const didMountRef = useRef(false);
   const [data, setData] = useState<User[] | null>(null);
@@ -31,8 +37,10 @@ const ChattingText: FC<OwnProps> = ({ token }) => {
       await setData([...chatData.data, ...(data || [])]);
     } else if (_401) {
       setWarningMeassage("토큰이 만료되었습니다. 재 로그인이 필요합니다.");
+      errorHandler(chatData?.status);
       setHasMore(false);
     } else {
+      errorHandler(chatData?.status);
       setHasMore(false);
     }
 
@@ -48,11 +56,11 @@ const ChattingText: FC<OwnProps> = ({ token }) => {
     if (!didMountRef.current) {
       didMountRef.current = true;
 
-      listenOnReceiveMessage((chatData) => {
+      listenOnReceiveMessage(socket)((chatData) => {
         setIsScroll(false);
         setData((v) => v?.concat(chatData) || [chatData]);
       });
-      listenOnError((error) => {
+      listenOnError(socket)((error) => {
         switch (error.code) {
           case "c01":
             setWarningMeassage("API가 존재하지 않습니다.");
