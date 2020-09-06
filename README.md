@@ -25,15 +25,23 @@ npm i https://github.com/EntryDSM/Maltese.git
 ## 사용 예시
 
 ```js
-import React from "react";
+import React, { useCallback } from "react";
 import Maltese from "entry-maltese";
 
 import "./index.css";
 
 function App() {
+  const errorHandler = useCallback((errorStatus: number) => {
+    if (errorStatus === 401) {
+      // refreshing token
+    } else {
+      // ...
+    }
+  }, []);
+
   return (
     <div className="App">
-      <Maltese token={로그인 토큰} isLogin={로그인 여부} />
+      <Maltese token={토큰} isLogin={로그인여부} errorHandler={errorHandler} />
     </div>
   );
 }
