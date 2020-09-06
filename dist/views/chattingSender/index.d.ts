@@ -1,3 +1,7 @@
 import { FC } from "react";
-declare const ChattingSender: FC;
+import { socketType } from "../../data/socket";
+interface OwnProps {
+    socket: socketType;
+}
+declare const ChattingSender: FC<OwnProps>;
 export default ChattingSender;

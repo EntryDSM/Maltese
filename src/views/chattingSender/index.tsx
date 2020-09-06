@@ -1,18 +1,22 @@
 import React, { FC, useState, useCallback } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-import { sendMessage } from "../../data/socket";
+import { sendMessage, socketType } from "../../data/socket";
 import { SendMark } from "../../assets";
 import * as S from "./style/index";
 
-const ChattingSender: FC = () => {
+interface OwnProps {
+  socket: socketType;
+}
+
+const ChattingSender: FC<OwnProps> = ({ socket }) => {
   const [message, setMessage] = useState("");
 
   const send = useCallback(async () => {
-    if (message === "") {
+    if (message.trim() === "") {
       return;
     }
-    await sendMessage({ content: message });
+    await sendMessage(socket)({ content: message });
     await setMessage("");
   }, [message]);
 
