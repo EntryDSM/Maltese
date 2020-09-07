@@ -541,6 +541,9 @@ const Messenger = ({ isLogin, token, socket, errorHandler }) => {
         setIsOpen(!isOpen);
     }, [isOpen]);
     useEffect(() => {
+        setIsOpen(false);
+    }, [token]);
+    useEffect(() => {
         [OpenMark, CloseMark].forEach((picture) => {
             const img = new Image();
             img.src = picture.fileName;
