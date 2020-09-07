@@ -20,6 +20,10 @@ const Messenger: FC<OwnProps> = ({ isLogin, token, socket, errorHandler }) => {
   }, [isOpen]);
 
   useEffect(() => {
+    setIsOpen(false);
+  }, [token]);
+
+  useEffect(() => {
     [OpenMark, CloseMark].forEach((picture) => {
       const img = new Image();
       img.src = picture.fileName;
