@@ -48,3 +48,19 @@ export const listenOnError = (socket: socketType) => (
 ) => {
   socket?.on("save error", listener);
 };
+
+export const removeReceiveMessageListener = (socket: socketType) => {
+  socket?.removeListener("receive message");
+};
+
+export const removeAuthenticatedListener = (socket: socketType) => {
+  socket?.removeListener("authenticated");
+};
+
+export const removeUnauthorizedListener = (socket: socketType) => {
+  socket?.removeListener("unauthorized");
+};
+
+export const removeErrorListener = (socket: socketType) => {
+  socket?.removeListener("save error");
+};
