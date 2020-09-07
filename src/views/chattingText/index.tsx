@@ -4,6 +4,8 @@ import type { User } from "../../data/apiTypes";
 import {
   listenOnReceiveMessage,
   listenOnError,
+  removeReceiveMessageListener,
+  removeErrorListener,
   socketType,
 } from "../../data/socket";
 import { getChatsApi, responseStatus } from "../../data/apis";
@@ -36,7 +38,7 @@ const ChattingText: FC<OwnProps> = ({ token, socket, errorHandler }) => {
     if (_200) {
       await setData([...chatData.data, ...(data || [])]);
     } else if (_401) {
-      setWarningMeassage("토큰이 만료되었습니다. 재 로그인이 필요합니다.");
+      setWarningMeassage("토큰이 만료되었습니다. 채팅을 다시 열어주세요.");
       errorHandler(chatData?.status);
       setHasMore(false);
     } else {
@@ -81,6 +83,11 @@ const ChattingText: FC<OwnProps> = ({ token, socket, errorHandler }) => {
             setWarningMeassage("X");
         }
       });
+
+      return () => {
+        removeReceiveMessageListener(socket);
+        removeErrorListener(socket);
+      };
     }
   }, []);
 
