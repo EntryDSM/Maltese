@@ -83,12 +83,12 @@ const ChattingText: FC<OwnProps> = ({ token, socket, errorHandler }) => {
             setWarningMeassage("X");
         }
       });
-
-      return () => {
-        removeReceiveMessageListener(socket);
-        removeErrorListener(socket);
-      };
     }
+
+    return () => {
+      removeReceiveMessageListener(socket);
+      removeErrorListener(socket);
+    };
   }, []);
 
   useEffect(() => {
