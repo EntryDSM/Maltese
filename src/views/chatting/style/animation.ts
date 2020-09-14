@@ -50,6 +50,11 @@ export const fadeOut = keyframes`
     transform: scale( 1 );
   }
 
+  70% {
+    opacity: 0;
+    transform: scale( 0.98 );
+  }
+
   100% {
     opacity: 0;
   }
