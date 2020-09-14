@@ -45,6 +45,7 @@ const ChattingSender: FC<OwnProps> = ({ socket }) => {
         onKeyPress={handleKeyPress}
         maxRows={4}
         placeholder="메세지를 입력해 주세요"
+        autoFocus={true}
       />
       <button onClick={send}>
         <img src={SendMark} alt="전송" />
