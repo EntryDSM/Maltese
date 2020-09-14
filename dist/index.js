@@ -336,7 +336,6 @@ const ChattingText = ({ token, socket, errorHandler }) => {
             v.content,
             React.createElement("span", null, convertTimeStempToSentence(v.created_at)))))))))));
 };
-//# sourceMappingURL=index.js.map
 
 const Wrapper$1 = styled.div `
   width: 100%;
@@ -412,7 +411,7 @@ const ChattingSender = ({ socket }) => {
         setMessage(value);
     }, []);
     return (React.createElement(Wrapper$1, null,
-        React.createElement(TextareaAutosize, { value: message, onChange: messageHandler, onKeyPress: handleKeyPress, maxRows: 4, placeholder: "\uBA54\uC138\uC9C0\uB97C \uC785\uB825\uD574 \uC8FC\uC138\uC694" }),
+        React.createElement(TextareaAutosize, { value: message, onChange: messageHandler, onKeyPress: handleKeyPress, maxRows: 4, placeholder: "\uBA54\uC138\uC9C0\uB97C \uC785\uB825\uD574 \uC8FC\uC138\uC694", autoFocus: true }),
         React.createElement("button", { onClick: send },
             React.createElement("img", { src: SendMark, alt: "\uC804\uC1A1" }))));
 };
