@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 import { Thema } from "../../../Thema";
-import { downToUp, fadeIn } from "./animation";
+import { downToUp, upToDown, fadeIn, fadeOut } from "./animation";
 
-export const Wrapper = styled.div`
-  animation: ${downToUp} 1s ease-in-out forwards;
+export const Wrapper = styled.div<{ isOpen: boolean }>`
+  animation: ${({ isOpen }) => (isOpen ? downToUp : upToDown)} 1s ease-in-out
+    forwards;
 
   width: 400px;
   overflow: hidden;
@@ -31,7 +32,8 @@ export const Wrapper = styled.div`
   }
 
   > div {
-    animation: ${fadeIn} 1.5s ease-out forwards;
+    animation: ${({ isOpen }) => (isOpen ? fadeIn : fadeOut)} 1.5s ease-out
+      forwards;
 
     width: 100%;
     height: 408px;

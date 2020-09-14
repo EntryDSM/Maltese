@@ -6,6 +6,7 @@ import styled, { css, keyframes } from 'styled-components';
 import TextareaAutosize from 'react-textarea-autosize';
 
 const baseURL = "https://schnauzer.entrydsm.hs.kr";
+//# sourceMappingURL=endpoints.js.map
 
 const socketConnect = () => socketio(baseURL, {
     transports: ["websocket"],
@@ -22,6 +23,13 @@ const listenOnReceiveMessage = (socket) => (listener) => {
 const listenOnError = (socket) => (listener) => {
     socket === null || socket === void 0 ? void 0 : socket.on("save error", listener);
 };
+const removeReceiveMessageListener = (socket) => {
+    socket === null || socket === void 0 ? void 0 : socket.removeListener("receive message");
+};
+const removeErrorListener = (socket) => {
+    socket === null || socket === void 0 ? void 0 : socket.removeListener("save error");
+};
+//# sourceMappingURL=socket.js.map
 
 var CloseMark = "data:image/png;base64,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";
 
@@ -46,6 +54,7 @@ function Loading() {
             }, transform: "rotate(39.428 50 50)" },
             React.createElement("animateTransform", { attributeName: "transform", dur: "1s", keyTimes: "0;1", repeatCount: "indefinite", type: "rotate", values: "0 50 50;360 50 50" }))));
 }
+//# sourceMappingURL=loading.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -103,6 +112,7 @@ const getChatsApi = (payload) => __awaiter(void 0, void 0, void 0, function* () 
         return { data: [], status: ((_a = err.response) === null || _a === void 0 ? void 0 : _a.status) || 0 };
     }
 });
+//# sourceMappingURL=apis.js.map
 
 const Loading$1 = styled.div `
   width: 100%;
@@ -116,6 +126,7 @@ const Loading$1 = styled.div `
     height: 20px;
   }
 `;
+//# sourceMappingURL=index.js.map
 
 const LoadingBar = () => {
     return (React.createElement(Loading$1, null,
@@ -124,12 +135,14 @@ const LoadingBar = () => {
 const InfinityScroll = ({ loadMore, hasMore, children }) => {
     return (React.createElement(InfiniteScroll, { pageStart: 0, loadMore: loadMore, loader: React.createElement(LoadingBar, { key: "loading" }), hasMore: hasMore, useWindow: false, isReverse: true, threshold: 10 }, children));
 };
+//# sourceMappingURL=index.js.map
 
 function convertTimeStempToSentence(timeStemp) {
     const date = timeStemp.split("T")[0].split("-");
     const time = timeStemp.split("T")[1].split(".")[0].split(":");
     return `${date[0]}년${date[1]}월${date[2]}일 ${time[0]}시${time[1]}분`;
 }
+//# sourceMappingURL=convert.js.map
 
 var Thema;
 (function (Thema) {
@@ -145,6 +158,7 @@ var Thema;
     Thema["DEFAULT_SHADOW"] = "0 4px 8px 0 rgba(0, 0, 0, 0.16)";
     Thema["DEFAULT_RADIUS"] = "12px";
 })(Thema || (Thema = {}));
+//# sourceMappingURL=Thema.js.map
 
 const Wrapper = styled.div `
   flex: 1;
@@ -243,6 +257,7 @@ const EmptyData = styled.p `
   font-size: 14px;
   color: ${Thema.MAIN_COLOR_1};
 `;
+//# sourceMappingURL=index.js.map
 
 const ChattingText = ({ token, socket, errorHandler }) => {
     const infinityScrollRef = useRef(null);
@@ -262,7 +277,7 @@ const ChattingText = ({ token, socket, errorHandler }) => {
             yield setData([...chatData.data, ...(data || [])]);
         }
         else if (_401) {
-            setWarningMeassage("토큰이 만료되었습니다. 재 로그인이 필요합니다.");
+            setWarningMeassage("토큰이 만료되었습니다. 채팅을 다시 열어주세요.");
             errorHandler(chatData === null || chatData === void 0 ? void 0 : chatData.status);
             setHasMore(false);
         }
@@ -305,6 +320,10 @@ const ChattingText = ({ token, socket, errorHandler }) => {
                 }
             });
         }
+        return () => {
+            removeReceiveMessageListener(socket);
+            removeErrorListener(socket);
+        };
     }, []);
     useEffect(() => {
         var _a, _b;
@@ -317,6 +336,7 @@ const ChattingText = ({ token, socket, errorHandler }) => {
             v.content,
             React.createElement("span", null, convertTimeStempToSentence(v.created_at)))))))))));
 };
+//# sourceMappingURL=index.js.map
 
 const Wrapper$1 = styled.div `
   width: 100%;
@@ -371,6 +391,7 @@ const Wrapper$1 = styled.div `
     }
   }
 `;
+//# sourceMappingURL=index.js.map
 
 const ChattingSender = ({ socket }) => {
     const [message, setMessage] = useState("");
@@ -408,11 +429,13 @@ const Wrapper$2 = styled.div `
     font-size: 24px;
   }
 `;
+//# sourceMappingURL=index.js.map
 
 const NotLogin = () => {
     return (React.createElement(Wrapper$2, null,
         React.createElement("p", null, "\uB85C\uADF8\uC778 \uD6C4 \uC774\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4")));
 };
+//# sourceMappingURL=index.js.map
 
 const downToUp = keyframes `
   0% {
@@ -425,6 +448,19 @@ const downToUp = keyframes `
   }
   100% {
     height: 450px;
+  }
+`;
+const upToDown = keyframes `
+  0% {
+    height: 450px;
+  }
+  30% {
+    height: 42px;
+    opacity: 1;
+  }
+  100% {
+    height: 42px;
+    opacity: 0;
   }
 `;
 const fadeIn = keyframes `
@@ -442,9 +478,26 @@ const fadeIn = keyframes `
     transform: scale( 1 );
   }
 `;
+const fadeOut = keyframes `
+  0% {
+    opacity: 1;
+    transform: scale( 1 );
+  }
+
+  70% {
+    opacity: 0;
+    transform: scale( 0.98 );
+  }
+
+  100% {
+    opacity: 0;
+  }
+`;
+//# sourceMappingURL=animation.js.map
 
 const Wrapper$3 = styled.div `
-  animation: ${downToUp} 1s ease-in-out forwards;
+  animation: ${({ isOpen }) => (isOpen ? downToUp : upToDown)} 1s ease-in-out
+    forwards;
 
   width: 400px;
   overflow: hidden;
@@ -471,7 +524,8 @@ const Wrapper$3 = styled.div `
   }
 
   > div {
-    animation: ${fadeIn} 1.5s ease-out forwards;
+    animation: ${({ isOpen }) => (isOpen ? fadeIn : fadeOut)} 1.5s ease-out
+      forwards;
 
     width: 100%;
     height: 408px;
@@ -485,14 +539,27 @@ const MessageView = styled.div `
   display: flex;
   flex-direction: column;
 `;
+//# sourceMappingURL=index.js.map
 
 const Chatting = ({ isOpen, isLogin, token, socket, errorHandler, }) => {
-    return isOpen ? (React.createElement(Wrapper$3, null,
+    const [animationRender, setAnimationRender] = useState(isOpen);
+    useEffect(() => {
+        if (isOpen) {
+            setAnimationRender(true);
+        }
+    }, [isOpen]);
+    const onAnimationEnd = () => {
+        if (!isOpen) {
+            setAnimationRender(false);
+        }
+    };
+    return animationRender ? (React.createElement(Wrapper$3, { isOpen: isOpen, onAnimationEnd: onAnimationEnd },
         React.createElement("header", null, "QnA"),
         React.createElement("div", null, isLogin && !!token ? (React.createElement(MessageView, null,
             React.createElement(ChattingText, { errorHandler: errorHandler, socket: socket, token: token }),
             React.createElement(ChattingSender, { socket: socket }))) : (React.createElement(NotLogin, null))))) : null;
 };
+//# sourceMappingURL=index.js.map
 
 const Wrapper$4 = styled.div `
   display: flex;
@@ -534,6 +601,7 @@ const Wrapper$4 = styled.div `
     }
   }
 `;
+//# sourceMappingURL=index.js.map
 
 const Messenger = ({ isLogin, token, socket, errorHandler }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -554,6 +622,7 @@ const Messenger = ({ isLogin, token, socket, errorHandler }) => {
         React.createElement("button", { onClick: isOpenHandler },
             React.createElement("img", { src: isOpen ? CloseMark : OpenMark, alt: "\uCC44\uD305\uCC3D \uC5F4\uAE30" }))));
 };
+//# sourceMappingURL=index.js.map
 
 const Views = ({ isLogin, token, errorHandler }) => {
     const [socket, setSocket] = useState(null);
@@ -571,5 +640,8 @@ const Views = ({ isLogin, token, errorHandler }) => {
     }, [token]);
     return (React.createElement(Messenger, { socket: socket, isLogin: isLogin, token: token || "", errorHandler: errorHandler }));
 };
+//# sourceMappingURL=index.js.map
+
+//# sourceMappingURL=index.js.map
 
 export default Views;

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 import ChattingText from "../chattingText";
 import { socketType } from "../../data/socket";
@@ -21,8 +21,22 @@ const Chatting: FC<OwnProps> = ({
   socket,
   errorHandler,
 }) => {
-  return isOpen ? (
-    <S.Wrapper>
+  const [animationRender, setAnimationRender] = useState(isOpen);
+
+  useEffect(() => {
+    if (isOpen) {
+      setAnimationRender(true);
+    }
+  }, [isOpen]);
+
+  const onAnimationEnd = () => {
+    if (!isOpen) {
+      setAnimationRender(false);
+    }
+  };
+
+  return animationRender ? (
+    <S.Wrapper isOpen={isOpen} onAnimationEnd={onAnimationEnd}>
       <header>QnA</header>
       <div>
         {isLogin && !!token ? (

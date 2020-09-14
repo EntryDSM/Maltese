@@ -8,3 +8,7 @@ export declare const listenOnReceiveMessage: (socket: socketType) => (listener: 
 export declare const listenOnAuthenticated: (socket: socketType) => (listener: () => void) => void;
 export declare const listenOnUnauthorized: (socket: socketType) => (listener: () => void) => void;
 export declare const listenOnError: (socket: socketType) => (listener: (error: SocketError) => void) => void;
+export declare const removeReceiveMessageListener: (socket: socketType) => void;
+export declare const removeAuthenticatedListener: (socket: socketType) => void;
+export declare const removeUnauthorizedListener: (socket: socketType) => void;
+export declare const removeErrorListener: (socket: socketType) => void;
