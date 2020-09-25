@@ -32,6 +32,7 @@ export const ChatBubble = styled.div<{ isAdmin: boolean }>`
     max-width: 260px;
     min-height: 36px;
     padding: 10px 12px;
+    word-break: break-all;
     box-sizing: border-box;
     font-size: 14px;
     border-radius: ${Thema.DEFAULT_RADIUS};
