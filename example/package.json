@@ -7,7 +7,7 @@
     "react-maltese": "file:..",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-uikit-sample": "1.0.3"
   },
   "scripts": {
